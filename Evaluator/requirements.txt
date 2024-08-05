@@ -1,5 +1,7 @@
 ifastapi
 uvicorn
 python-dotenv
+python-multipart
 tqdm 
 
+openai
