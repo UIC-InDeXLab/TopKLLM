@@ -97,8 +97,8 @@ async def upload_query_file(model: str, file: UploadFile = File(...)):
             return (query_text, f"Error: {str(e)}")
 
     with model_llm() as llm:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-            future_to_query = {executor.submit(process_query, llm, query): query for query in queries}
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            future_to_query = {executor.submit(process_query, llm, query): str(query).replace('"', "") for query in queries}
             for future in tqdm(concurrent.futures.as_completed(future_to_query), total=len(future_to_query),
                                desc="Processing queries"):
                 query = future_to_query[future]
@@ -106,7 +106,8 @@ async def upload_query_file(model: str, file: UploadFile = File(...)):
                     result = future.result()
                     responses.append(result)
                 except Exception as e:
-                    responses.append((query, f"Error: {str(e)}"))
+                    logger.info(f"Error for query: {query}, Error: {str(e)}")
+                    # responses.append((query, f"Error: {str(e)}"))
 
     # Save responses to CSV file
     csv_filename = f"{model}.csv"

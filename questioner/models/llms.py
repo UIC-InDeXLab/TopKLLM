@@ -12,7 +12,6 @@ _OLLAMA_DOCKER_SUPPORTED_MODELS = ["llama3", "phi3", "phi3:medium", "gemma2",
                                    "mistral", "moondream", "neural-chat", "starling-lm",
                                    "codellama", "llama2-uncensored", "llava", "solar", "qwen2"]
 
-
 class Response:
     def __init__(self, r):
         self._r = r
