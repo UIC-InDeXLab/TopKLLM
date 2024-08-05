@@ -1,0 +1,19 @@
+version: '3'
+services:
+  questioner:
+    build:
+      context: Questioner
+    ports:
+      - "8001:80"
+    env_file:
+      - ./Questioner/.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # Bind mount the Docker socket
+
+  evaluator:
+    build:
+      context: Evaluator
+    ports:
+      - "8002:80"
+    env_file:
+      - ./Evaluator/.env
