@@ -8,9 +8,35 @@ from models.singleton import Singleton
 
 logger = logging.getLogger(__name__)
 
-_OLLAMA_DOCKER_SUPPORTED_MODELS = ["llama3", "phi3", "phi3:medium", "gemma2",
-                                   "mistral", "moondream", "neural-chat", "starling-lm",
-                                   "codellama", "llama2-uncensored", "llava", "solar", "qwen2"]
+_OLLAMA_DOCKER_SUPPORTED_MODELS = [
+    "phi3:medium-128k",
+    "yi:9b-chat",
+    "glm4:9b-chat-q4_0",
+    "glm4:9b",
+    "deepseek-coder-v2:16b-lite-instruct-q4_0",
+    "qwen2:7b-instruct",
+    "phi3:mini-4k",
+    "yi:6b-chat",
+    "qwen2:7b",
+    "llama3:instruct",
+    "gemma2:9b",
+    "deepseek-coder-v2:lite",
+    "zephyr:7b-beta",
+    "qwen:14b-chat",
+    "gemma:7b",
+    "mistral:v0.1",
+    "llama3:8b",
+    "mistral:7b-instruct-v0.2-q4_0",
+    "qwen:7b-chat",
+    "mistral:v0.2",
+    "qwen2:1.5b",
+    "llama2:13b",
+    "qwen2:1.5b-instruct",
+    "llama2:7b",
+    "qwen2:0.5b-instruct",
+    "qwen2:0.5b",
+    "gemma:2b"
+]
 
 class Response:
     def __init__(self, r):
